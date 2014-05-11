@@ -10,7 +10,6 @@
 #import "QBVolumeManager.h"
 #import "QBPreferencesController.h"
 #import "MainWindowController.h"
-#import <Carbon/Carbon.h>
 #import "BCSystemInfo.h"
 #import "BCAboutBox.h"
 

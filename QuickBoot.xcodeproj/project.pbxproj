@@ -31,6 +31,7 @@
 		0249E26B191EEB970001ACD6 /* NSArray+BCAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0249E26A191EEB970001ACD6 /* NSArray+BCAdditions.m */; };
 		0249E271191EF2E00001ACD6 /* BDDisk.m in Sources */ = {isa = PBXBuildFile; fileRef = 0249E26E191EF2E00001ACD6 /* BDDisk.m */; };
 		0249E272191EF2E00001ACD6 /* BDDiskArbitrationSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 0249E270191EF2E00001ACD6 /* BDDiskArbitrationSession.m */; };
+		0249E277191F124B0001ACD6 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0249E276191F124B0001ACD6 /* ServiceManagement.framework */; };
 		025D1889108A604C00D8995D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 025D1888108A604C00D8995D /* main.m */; };
 		027A9FEA0C467C7F000BBCE9 /* MainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 027A9FE90C467C7F000BBCE9 /* MainWindowController.m */; };
 		027AA0320C468374000BBCE9 /* DiskArbitration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 027AA0310C468374000BBCE9 /* DiskArbitration.framework */; };
@@ -116,6 +117,7 @@
 		0249E26E191EF2E00001ACD6 /* BDDisk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BDDisk.m; path = Dependencies/ButteredDisk/BDDisk.m; sourceTree = "<group>"; };
 		0249E26F191EF2E00001ACD6 /* BDDiskArbitrationSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BDDiskArbitrationSession.h; path = Dependencies/ButteredDisk/BDDiskArbitrationSession.h; sourceTree = "<group>"; };
 		0249E270191EF2E00001ACD6 /* BDDiskArbitrationSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BDDiskArbitrationSession.m; path = Dependencies/ButteredDisk/BDDiskArbitrationSession.m; sourceTree = "<group>"; };
+		0249E276191F124B0001ACD6 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		025D1881108A5F8500D8995D /* QuickBootHelper */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = QuickBootHelper; sourceTree = BUILT_PRODUCTS_DIR; };
 		025D1888108A604C00D8995D /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		027A9FE80C467C7F000BBCE9 /* MainWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainWindowController.h; path = Source/MainWindowController.h; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0249E277191F124B0001ACD6 /* ServiceManagement.framework in Frameworks */,
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				027AA0320C468374000BBCE9 /* DiskArbitration.framework in Frameworks */,
 				027AA11E0C472078000BBCE9 /* Security.framework in Frameworks */,
@@ -349,6 +352,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0249E276191F124B0001ACD6 /* ServiceManagement.framework */,
 				1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */,
 				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
 			);

@@ -134,42 +134,47 @@ void *MainWindowControllerKVOContext = &MainWindowControllerKVOContext;
 
 #pragma mark -
 
-- (BOOL)setSelectedVolumeForBooting
+- (void)setSelectedVolumeForBootingWithCompletionHandler:(void(^)(BOOL success))handler
 {
 	if([[self.volumesController selectedObjects] count] <= 0)
-		return NO;
+		handler(NO);
 	QBVolume *volume = [[self.volumesController selectedObjects] objectAtIndex:0];
 	//NSLog(@"Setting boot volume: %@", volume);
-	QBVolumeManagerError result = [[self volumeManager] setBootDisk:volume nextOnly:YES];
-	if(result != kQBVolumeManagerSuccess)
-	{
-		NSAlert *alert = nil;
-		NSString *errorDescription = nil;
-		switch (result) {
-			case kQBVolumeManagerAuthenticationError:
-				errorDescription = NSLocalizedString(@"Error occurred while trying to authenticate", @"Authentication error description");
-				break;
-			case kQBVolumeManagerSetBootError:
-				errorDescription = NSLocalizedString(@"Error occurred while executing the bless command", @"Bless command error description");
-				break;
-			case kQBVolumeManagerCanceled:
-				break;
-			default:
-				errorDescription = NSLocalizedString(@"Unknown error occurred while trying to set boot volume", @"Unknown error description");
-				break;
+    //	QBVolumeManagerError result = [[self volumeManager] setBootMountPath:[volume.disk devicePath] nextOnly:YES legacy:volume.legacyOS];
+	[[self volumeManager] setBootVolume:volume nextOnly:YES withCompletionHandler:^(QBVolumeManagerError result) {
+        BOOL successResult = YES;
+		if(result != kQBVolumeManagerSuccess)
+		{
+			NSString *errorDescription = nil;
+			switch (result) {
+				case kQBVolumeManagerAuthenticationError:
+					errorDescription = NSLocalizedString(@"Error occurred while trying to authenticate", @"Authentication error description");
+					break;
+				case kQBVolumeManagerSetBootError:
+					errorDescription = NSLocalizedString(@"Error occurred while executing the bless command", @"Bless command error description");
+					break;
+				case kQBVolumeManagerCanceled:
+					break;
+				default:
+					errorDescription = NSLocalizedString(@"Unknown error occurred while trying to set boot volume", @"Unknown error description");
+					break;
+			}
+			if(errorDescription) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    NSAlert *alert = [NSAlert alertWithMessageText:NSLocalizedString(@"Failed to set boot volume", @"Error message text for setting boot drive")
+                                                     defaultButton:NSLocalizedString(@"OK", @"OK button label")
+                                                   alternateButton:NULL
+                                                       otherButton:NULL
+                                informativeTextWithFormat:@"%@", errorDescription];
+                    [alert runModal];
+                });
+			}
+            successResult = NO;
 		}
-		if(errorDescription) {
-			alert = [NSAlert alertWithMessageText:NSLocalizedString(@"Failed to set boot volume", @"Error message text for setting boot drive")
-									defaultButton:NSLocalizedString(@"OK", @"OK button label")
-								  alternateButton:NULL
-									  otherButton:NULL
-						informativeTextWithFormat:@"%@", errorDescription];
-			[alert runModal];
-		}
-		
-		return NO;
-	}
-	return YES;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            handler(successResult);
+        });
+	}];
 }
 
 - (BOOL)restart
@@ -207,18 +212,17 @@ void *MainWindowControllerKVOContext = &MainWindowControllerKVOContext;
 #pragma mark - Actions -
 - (IBAction)bootSelectedDriveNow:(id)sender
 {
-	if(![self setSelectedVolumeForBooting])
-		return;
-	
-	/**
-	 * Now reboot
-	 */
-	[self restart];
+    __weak MainWindowController *weakSelf = self;
+    [self setSelectedVolumeForBootingWithCompletionHandler:^(BOOL success) {
+        if(success) {
+            [weakSelf restart];
+        }
+    }];
 }
 
 - (IBAction)bootSelectedDriveLater:(id)sender
 {
-	[self setSelectedVolumeForBooting];
+    [self setSelectedVolumeForBootingWithCompletionHandler:nil];
 }
 
 - (IBAction)restart:(id)sender

@@ -19,6 +19,7 @@ typedef enum {
 	kQBVolumeManagerUnknownError
 } QBVolumeManagerError;
 
+typedef void(^QBVolumeManagerSetBootCompletionBlock)(QBVolumeManagerError result);
 
 @interface QBVolumeManager : NSObject<BDDiskArbitrationSessionDelegate, QBOSDetectOperationDelegate>
 {
@@ -40,6 +41,6 @@ typedef enum {
 //- (BOOL)legacyForVolumePath:(NSString *)volumePath;
 //- (NSDictionary *)volumeDictionaryForDisk:(BCDisk *)disk;
 
-- (QBVolumeManagerError)setBootDisk:(QBVolume *)volume nextOnly:(BOOL)nextOnly;
+- (void)setBootVolume:(QBVolume *)volume nextOnly:(BOOL)nextOnly withCompletionHandler:(QBVolumeManagerSetBootCompletionBlock)handler;
 
 @end

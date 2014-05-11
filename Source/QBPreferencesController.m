@@ -42,11 +42,6 @@
 	
 }
 
-- (BOOL)isLeopardOrBetter
-{
-	return [[BCSystemInfo sharedSystemInfo] isLeopardOrBetter];
-}
-
 #pragma mark Login item
 
 - (BOOL) shouldStartQuickBootAtLogin {

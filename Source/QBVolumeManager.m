@@ -43,9 +43,9 @@
 												 selector:@selector(passwordlessBootingChanged:)
 													 name:@"QBPasswordlessBootingChanged"
 												   object:nil];
-		
-		if([[NSUserDefaults standardUserDefaults] boolForKey:@"PasswordlessBooting"])
-			[self performSelector:@selector(checkHelperPermissions) withObject:nil afterDelay:0.1];
+        NSError *error = nil;
+		if(![self installHelperIfNeeded:&error] && error)
+			[NSApp presentError:error];
 	}
 	return self;
 }

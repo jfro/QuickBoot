@@ -37,13 +37,6 @@
 	return self;
 }
 
-- (BOOL)isLeopardOrBetter
-{
-//	if(mOSVersion.majorVersion == 10 && mOSVersion.minorVersion <= 4)
-//		return NO;
-	return YES;
-}
-
 - (NSString *)systemVersionString
 {
 	return [[NSProcessInfo processInfo] operatingSystemVersionString];

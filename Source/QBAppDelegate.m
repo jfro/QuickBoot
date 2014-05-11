@@ -77,9 +77,9 @@
 	[[NSUserDefaults standardUserDefaults] synchronize];
 	
 	// work around for 10.4, force status item only mode
-	if([[NSUserDefaults standardUserDefaults] boolForKey:@"ShowStatusIcon"] || ![[BCSystemInfo sharedSystemInfo] isLeopardOrBetter])
+	if([[NSUserDefaults standardUserDefaults] boolForKey:@"ShowStatusIcon"])
 		[self setupStatusItem];
-	if([[NSUserDefaults standardUserDefaults] boolForKey:@"ShowIconInDock"] && [[BCSystemInfo sharedSystemInfo] isLeopardOrBetter])
+	if([[NSUserDefaults standardUserDefaults] boolForKey:@"ShowIconInDock"])
 		[[self.mainWindowController window] makeKeyAndOrderFront:nil];
 		
 	self.volumeManager = [[QBVolumeManager alloc] init];

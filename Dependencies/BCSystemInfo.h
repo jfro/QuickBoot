@@ -22,7 +22,6 @@
 
 + (BCSystemInfo *)sharedSystemInfo;
 
-- (BOOL)isLeopardOrBetter;
 - (NSString *)systemVersionString;
 - (unsigned int)processorSpeed;
 - (NSUInteger)physicalRAMInMegabytes;

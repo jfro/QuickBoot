@@ -17,8 +17,6 @@
 @property (assign) BOOL shouldStartQuickBootAtLogin;
 
 - (IBAction)toggleShowBuildNumber:(id)sender;
-- (IBAction)togglePasswordlessBooting:(id)sender;
 - (IBAction)toggleLegacyBooting:(id)sender;
 
-- (BOOL)isLeopardOrBetter;
 @end

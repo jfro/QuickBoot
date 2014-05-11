@@ -17,7 +17,7 @@ int main(int argc, char *argv[])
 	int ret = 0;
     
     @autoreleasepool {
-        
+        NSLog(@"QuickBootHelper Starting");
         NSArray *args = [[NSProcessInfo processInfo] arguments];
         
         // parse args
@@ -58,6 +58,7 @@ int main(int argc, char *argv[])
         NSTask *task = [[NSTask alloc] init];
         [task setLaunchPath:@"/usr/sbin/bless"];
         [task setArguments:blessArguments];
+        NSLog(@"Launching bless with args: %@", blessArguments);
         
         [task launch];
         [task waitUntilExit];

@@ -95,7 +95,10 @@
 //		NSLog(@"Changing permissions");
 		args[0] = "4755";
 		args[1] = (char *)[[self helperPath] UTF8String];;
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 		myStatus = AuthorizationExecuteWithPrivileges(myAuthorizationRef, "/bin/chmod", kAuthorizationFlagDefaults, args, NULL);
+#pragma clang diagnostic pop
 		if(myStatus != noErr)
 		{
 			NSLog(@"chmod failed on helper");
@@ -105,7 +108,10 @@
 		args[0] = "root";
 		args[1] = (char *)[[self helperPath] UTF8String];;
 //		NSLog(@"Changing owner");
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 		myStatus = AuthorizationExecuteWithPrivileges(myAuthorizationRef, "/usr/sbin/chown", kAuthorizationFlagDefaults, args, NULL);
+#pragma clang diagnostic pop
 		if(myStatus != noErr)
 		{
 			NSLog(@"chown failed on helper");
@@ -306,7 +312,10 @@ cleanup:
 				args[4] = NULL;
 			}
 			args[5] = NULL; // terminate the args
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 			myStatus = AuthorizationExecuteWithPrivileges(myAuthorizationRef, "/usr/sbin/bless", 0, args, NULL);
+#pragma clang diagnostic pop
 			
 			if (myStatus != noErr)
 			{

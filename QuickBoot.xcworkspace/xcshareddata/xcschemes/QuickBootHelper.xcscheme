@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "025D1880108A5F8500D8995D"
-               BuildableName = "QuickBootHelper"
-               BlueprintName = "QuickBootHelper"
+               BuildableName = "com.buttered-cat.QuickBootHelper"
+               BlueprintName = "com.buttered-cat.QuickBootHelper"
                ReferencedContainer = "container:QuickBoot.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,8 +45,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "025D1880108A5F8500D8995D"
-            BuildableName = "QuickBootHelper"
-            BlueprintName = "QuickBootHelper"
+            BuildableName = "com.buttered-cat.QuickBootHelper"
+            BlueprintName = "com.buttered-cat.QuickBootHelper"
             ReferencedContainer = "container:QuickBoot.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -65,8 +65,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "025D1880108A5F8500D8995D"
-            BuildableName = "QuickBootHelper"
-            BlueprintName = "QuickBootHelper"
+            BuildableName = "com.buttered-cat.QuickBootHelper"
+            BlueprintName = "com.buttered-cat.QuickBootHelper"
             ReferencedContainer = "container:QuickBoot.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

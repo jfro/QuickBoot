@@ -32,7 +32,9 @@
 		0249E271191EF2E00001ACD6 /* BDDisk.m in Sources */ = {isa = PBXBuildFile; fileRef = 0249E26E191EF2E00001ACD6 /* BDDisk.m */; };
 		0249E272191EF2E00001ACD6 /* BDDiskArbitrationSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 0249E270191EF2E00001ACD6 /* BDDiskArbitrationSession.m */; };
 		0249E277191F124B0001ACD6 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0249E276191F124B0001ACD6 /* ServiceManagement.framework */; };
-		025D1889108A604C00D8995D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 025D1888108A604C00D8995D /* main.m */; };
+		0249E280191F1CBE0001ACD6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0249E27F191F1CBE0001ACD6 /* Foundation.framework */; };
+		0249E28C191F1CE50001ACD6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 025D1888108A604C00D8995D /* main.m */; };
+		0249E28F191F1D750001ACD6 /* com.buttered-cat.QuickBootHelper in Copy Helper */ = {isa = PBXBuildFile; fileRef = 0249E27E191F1CBE0001ACD6 /* com.buttered-cat.QuickBootHelper */; };
 		027A9FEA0C467C7F000BBCE9 /* MainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 027A9FE90C467C7F000BBCE9 /* MainWindowController.m */; };
 		027AA0320C468374000BBCE9 /* DiskArbitration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 027AA0310C468374000BBCE9 /* DiskArbitration.framework */; };
 		027AA11E0C472078000BBCE9 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 027AA11D0C472078000BBCE9 /* Security.framework */; };
@@ -41,7 +43,6 @@
 		029A43C615F6E27300087FD1 /* StatusItemIconAlt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 029A43C415F6E27300087FD1 /* StatusItemIconAlt@2x.png */; };
 		029A43C815F705B100087FD1 /* QuickBoot-logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 029A43C715F705B100087FD1 /* QuickBoot-logo@2x.png */; };
 		029A43E815F77E8600087FD1 /* QuickBoot.iconset in Resources */ = {isa = PBXBuildFile; fileRef = 029A43E715F77E8600087FD1 /* QuickBoot.iconset */; };
-		02AC892F120F16CE0024A1A7 /* QuickBootHelper in Copy Helper */ = {isa = PBXBuildFile; fileRef = 025D1881108A5F8500D8995D /* QuickBootHelper */; };
 		02B40C760C4726AA00D4A0CD /* SendAppleEvent.c in Sources */ = {isa = PBXBuildFile; fileRef = 02B40C750C4726AA00D4A0CD /* SendAppleEvent.c */; };
 		02B40CCD0C47279400D4A0CD /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02B40CCC0C47279400D4A0CD /* Carbon.framework */; };
 		02B40CF10C47295400D4A0CD /* QBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 02B40CF00C47295400D4A0CD /* QBAppDelegate.m */; };
@@ -58,12 +59,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		02AC892B120F16A30024A1A7 /* PBXContainerItemProxy */ = {
+		0249E28D191F1D2D0001ACD6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 025D1880108A5F8500D8995D;
-			remoteInfo = QuickBootHelper;
+			remoteGlobalIDString = 0249E27D191F1CBE0001ACD6;
+			remoteInfo = "com.buttered-cat.QuickBootHelper";
 		};
 		02D46CA615D0B4DE001DC06C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -85,13 +86,22 @@
 			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0249E27C191F1CBE0001ACD6 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
 		02AC8934120F16D80024A1A7 /* Copy Helper */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 6;
+			dstPath = Contents/Library/LaunchServices;
+			dstSubfolderSpec = 1;
 			files = (
-				02AC892F120F16CE0024A1A7 /* QuickBootHelper in Copy Helper */,
+				0249E28F191F1D750001ACD6 /* com.buttered-cat.QuickBootHelper in Copy Helper */,
 			);
 			name = "Copy Helper";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -118,7 +128,10 @@
 		0249E26F191EF2E00001ACD6 /* BDDiskArbitrationSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BDDiskArbitrationSession.h; path = Dependencies/ButteredDisk/BDDiskArbitrationSession.h; sourceTree = "<group>"; };
 		0249E270191EF2E00001ACD6 /* BDDiskArbitrationSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BDDiskArbitrationSession.m; path = Dependencies/ButteredDisk/BDDiskArbitrationSession.m; sourceTree = "<group>"; };
 		0249E276191F124B0001ACD6 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
-		025D1881108A5F8500D8995D /* QuickBootHelper */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = QuickBootHelper; sourceTree = BUILT_PRODUCTS_DIR; };
+		0249E278191F1B000001ACD6 /* QuickBootHelper-info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "QuickBootHelper-info.plist"; sourceTree = "<group>"; };
+		0249E279191F1B000001ACD6 /* QuickBootHelper-launchd.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "QuickBootHelper-launchd.plist"; sourceTree = "<group>"; };
+		0249E27E191F1CBE0001ACD6 /* com.buttered-cat.QuickBootHelper */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "com.buttered-cat.QuickBootHelper"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0249E27F191F1CBE0001ACD6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		025D1888108A604C00D8995D /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		027A9FE80C467C7F000BBCE9 /* MainWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainWindowController.h; path = Source/MainWindowController.h; sourceTree = "<group>"; };
 		027A9FE90C467C7F000BBCE9 /* MainWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainWindowController.m; path = Source/MainWindowController.m; sourceTree = "<group>"; };
@@ -155,10 +168,11 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		025D187F108A5F8500D8995D /* Frameworks */ = {
+		0249E27B191F1CBE0001ACD6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0249E280191F1CBE0001ACD6 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,6 +263,8 @@
 			isa = PBXGroup;
 			children = (
 				025D1888108A604C00D8995D /* main.m */,
+				0249E278191F1B000001ACD6 /* QuickBootHelper-info.plist */,
+				0249E279191F1B000001ACD6 /* QuickBootHelper-launchd.plist */,
 			);
 			name = QuickBootHelper;
 			path = Source/Helper;
@@ -310,7 +326,7 @@
 			isa = PBXGroup;
 			children = (
 				8D1107320486CEB800E47090 /* QuickBoot.app */,
-				025D1881108A5F8500D8995D /* QuickBootHelper */,
+				0249E27E191F1CBE0001ACD6 /* com.buttered-cat.QuickBootHelper */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -354,6 +370,7 @@
 			children = (
 				0249E276191F124B0001ACD6 /* ServiceManagement.framework */,
 				1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */,
+				0249E27F191F1CBE0001ACD6 /* Foundation.framework */,
 				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
 			);
 			name = Frameworks;
@@ -362,20 +379,21 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		025D1880108A5F8500D8995D /* QuickBootHelper */ = {
+		0249E27D191F1CBE0001ACD6 /* com.buttered-cat.QuickBootHelper */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 025D1886108A5FA300D8995D /* Build configuration list for PBXNativeTarget "QuickBootHelper" */;
+			buildConfigurationList = 0249E288191F1CBE0001ACD6 /* Build configuration list for PBXNativeTarget "com.buttered-cat.QuickBootHelper" */;
 			buildPhases = (
-				025D187E108A5F8500D8995D /* Sources */,
-				025D187F108A5F8500D8995D /* Frameworks */,
+				0249E27A191F1CBE0001ACD6 /* Sources */,
+				0249E27B191F1CBE0001ACD6 /* Frameworks */,
+				0249E27C191F1CBE0001ACD6 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = QuickBootHelper;
-			productName = QuickBootHelper;
-			productReference = 025D1881108A5F8500D8995D /* QuickBootHelper */;
+			name = "com.buttered-cat.QuickBootHelper";
+			productName = "com.buttered-cat.QuickBootHelper";
+			productReference = 0249E27E191F1CBE0001ACD6 /* com.buttered-cat.QuickBootHelper */;
 			productType = "com.apple.product-type.tool";
 		};
 		8D1107260486CEB800E47090 /* QuickBoot */ = {
@@ -387,13 +405,13 @@
 				8D11072E0486CEB800E47090 /* Frameworks */,
 				021483BA0C49B19C00DB518E /* Copy Frameworks */,
 				02AC8934120F16D80024A1A7 /* Copy Helper */,
-				022ADA2618BC5666006005F3 /* ShellScript */,
+				022ADA2618BC5666006005F3 /* Re-sign frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				02D46CA715D0B4DE001DC06C /* PBXTargetDependency */,
-				02AC892C120F16A30024A1A7 /* PBXTargetDependency */,
+				0249E28E191F1D2D0001ACD6 /* PBXTargetDependency */,
 			);
 			name = QuickBoot;
 			productInstallPath = "$(HOME)/Applications";
@@ -425,8 +443,8 @@
 			projectRoot = "";
 			targets = (
 				8D1107260486CEB800E47090 /* QuickBoot */,
-				025D1880108A5F8500D8995D /* QuickBootHelper */,
 				02D46CA015D0B468001DC06C /* GenGitVersion */,
+				0249E27D191F1CBE0001ACD6 /* com.buttered-cat.QuickBootHelper */,
 			);
 		};
 /* End PBXProject section */
@@ -455,13 +473,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		022ADA2618BC5666006005F3 /* ShellScript */ = {
+		022ADA2618BC5666006005F3 /* Re-sign frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "Re-sign frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -487,11 +506,11 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		025D187E108A5F8500D8995D /* Sources */ = {
+		0249E27A191F1CBE0001ACD6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				025D1889108A604C00D8995D /* main.m in Sources */,
+				0249E28C191F1CE50001ACD6 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -519,10 +538,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		02AC892C120F16A30024A1A7 /* PBXTargetDependency */ = {
+		0249E28E191F1D2D0001ACD6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 025D1880108A5F8500D8995D /* QuickBootHelper */;
-			targetProxy = 02AC892B120F16A30024A1A7 /* PBXContainerItemProxy */;
+			target = 0249E27D191F1CBE0001ACD6 /* com.buttered-cat.QuickBootHelper */;
+			targetProxy = 0249E28D191F1D2D0001ACD6 /* PBXContainerItemProxy */;
 		};
 		02D46CA715D0B4DE001DC06C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -583,66 +602,147 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		025D1883108A5F8500D8995D /* Debug */ = {
+		0249E289191F1CBE0001ACD6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
-				INSTALL_PATH = /usr/local/bin;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
 					"-framework",
 					AppKit,
+					"-sectcreate",
+					__TEXT,
+					__info_plist,
+					"Source/Helper/QuickBootHelper-Info.plist",
+					"-sectcreate",
+					__TEXT,
+					__launchd_plist,
+					"Source/Helper/QuickBootHelper-Launchd.plist",
 				);
-				PRODUCT_NAME = QuickBootHelper;
-				SKIP_INSTALL = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
 		};
-		025D1884108A5F8500D8995D /* Beta */ = {
+		0249E28A191F1CBE0001ACD6 /* Beta */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
-				INSTALL_PATH = /usr/local/bin;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
 					"-framework",
 					AppKit,
+					"-sectcreate",
+					__TEXT,
+					__info_plist,
+					"Source/Helper/QuickBootHelper-Info.plist",
+					"-sectcreate",
+					__TEXT,
+					__launchd_plist,
+					"Source/Helper/QuickBootHelper-Launchd.plist",
 				);
-				PRODUCT_NAME = QuickBootHelper;
-				SKIP_INSTALL = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Beta;
 		};
-		025D1885108A5F8500D8995D /* Release */ = {
+		0249E28B191F1CBE0001ACD6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
-				INSTALL_PATH = /usr/local/bin;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
 					"-framework",
 					AppKit,
+					"-sectcreate",
+					__TEXT,
+					__info_plist,
+					"Source/Helper/QuickBootHelper-Info.plist",
+					"-sectcreate",
+					__TEXT,
+					__launchd_plist,
+					"Source/Helper/QuickBootHelper-Launchd.plist",
 				);
-				PRODUCT_NAME = QuickBootHelper;
-				SKIP_INSTALL = YES;
-				ZERO_LINK = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
 		};
@@ -785,15 +885,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		025D1886108A5FA300D8995D /* Build configuration list for PBXNativeTarget "QuickBootHelper" */ = {
+		0249E288191F1CBE0001ACD6 /* Build configuration list for PBXNativeTarget "com.buttered-cat.QuickBootHelper" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				025D1883108A5F8500D8995D /* Debug */,
-				025D1884108A5F8500D8995D /* Beta */,
-				025D1885108A5F8500D8995D /* Release */,
+				0249E289191F1CBE0001ACD6 /* Debug */,
+				0249E28A191F1CBE0001ACD6 /* Beta */,
+				0249E28B191F1CBE0001ACD6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
 		02D46CA115D0B468001DC06C /* Build configuration list for PBXAggregateTarget "GenGitVersion" */ = {
 			isa = XCConfigurationList;

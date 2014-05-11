@@ -11,8 +11,8 @@
 #import "QBPreferencesController.h"
 #import "MainWindowController.h"
 #import <Carbon/Carbon.h>
-#import <BCAppKit/BCSystemInfo.h>
-#import <BCAppKit/BCAboutBox.h>
+#import "BCSystemInfo.h"
+#import "BCAboutBox.h"
 
 @implementation QBAppDelegate
 
@@ -36,11 +36,10 @@
 {
 	if([keyPath isEqualToString:@"values.ShowStatusIcon"])
 	{
-		if(statusItem)
+		if(self.statusItem)
 		{
-			[[NSStatusBar systemStatusBar] removeStatusItem:statusItem];
-			[statusItem release];
-			statusItem = nil;
+			[[NSStatusBar systemStatusBar] removeStatusItem:self.statusItem];
+			self.statusItem = nil;
 		}
 		else
 			[self setupStatusItem];
@@ -53,19 +52,17 @@
 
 - (void)setupStatusItem
 {
-	if(statusItem)
+	if(self.statusItem)
 	{
-		[[NSStatusBar systemStatusBar] removeStatusItem:statusItem];
-		[statusItem release];
-		statusItem = nil;
+		[[NSStatusBar systemStatusBar] removeStatusItem:self.statusItem];
+		self.statusItem = nil;
 	}
 	
-	statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:24.0f];
-	[statusItem retain];
-	[statusItem setImage:[NSImage imageNamed:@"StatusItemIcon"]];
-	[statusItem setAlternateImage:[NSImage imageNamed:@"StatusItemIconAlt"]];
-	[statusItem setHighlightMode:YES];
-	[statusItem setMenu:statusMenu];
+	self.statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:24.0f];
+	[self.statusItem setImage:[NSImage imageNamed:@"StatusItemIcon"]];
+	[self.statusItem setAlternateImage:[NSImage imageNamed:@"StatusItemIconAlt"]];
+	[self.statusItem setHighlightMode:YES];
+	[self.statusItem setMenu:self.statusMenu];
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
@@ -84,29 +81,25 @@
 	if([[NSUserDefaults standardUserDefaults] boolForKey:@"ShowStatusIcon"] || ![[BCSystemInfo sharedSystemInfo] isLeopardOrBetter])
 		[self setupStatusItem];
 	if([[NSUserDefaults standardUserDefaults] boolForKey:@"ShowIconInDock"] && [[BCSystemInfo sharedSystemInfo] isLeopardOrBetter])
-		[[mainWindowController window] makeKeyAndOrderFront:nil];
+		[[self.mainWindowController window] makeKeyAndOrderFront:nil];
 		
-	volumeManager = [[QBVolumeManager alloc] init];
-	[mainWindowController setVolumeManager:volumeManager];
+	self.volumeManager = [[QBVolumeManager alloc] init];
+	[self.mainWindowController setVolumeManager:self.volumeManager];
 }
 
 - (void)dealloc
 {
-	[statusItem release];
-	[volumeManager release];
-	[preferencesController release];
 	[[NSUserDefaultsController sharedUserDefaultsController] removeObserver:self forKeyPath:@"values.ShowStatusIcon"];
 //	[[NSUserDefaultsController sharedUserDefaultsController] removeObserver:self forKeyPath:@"values.ShowIconInDock"];
-	[super dealloc];
 }
 
 - (IBAction)showAboutWindow:(id)sender
 {
-	if(!aboutBox) {
-		aboutBox = [[BCAboutBox alloc] init];
-		aboutBox.logoImageName = @"QuickBoot-logo";
+	if(!self.aboutBox) {
+		self.aboutBox = [[BCAboutBox alloc] init];
+		self.aboutBox.logoImageName = @"QuickBoot-logo";
 	}
-	[aboutBox display:sender];
+	[self.aboutBox display:sender];
 }
 
 - (IBAction)sendFeedback:(id)sender
@@ -125,11 +118,11 @@
 
 - (IBAction)showPreferences:(id)sender
 {
-	if(!preferencesController)
-		preferencesController = [[QBPreferencesController alloc] init];
+	if(!self.preferencesController)
+		self.preferencesController = [[QBPreferencesController alloc] init];
 	
 	[NSApp activateIgnoringOtherApps:YES]; // needed when in background mode
-	[preferencesController showWindow:nil];
+	[self.preferencesController showWindow:nil];
 }
 
 - (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)theApplication

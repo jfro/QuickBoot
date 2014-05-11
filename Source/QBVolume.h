@@ -7,7 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "BCDisk.h"
+#import "BDDisk.h"
 
 @interface QBVolume : NSObject
 {
@@ -17,7 +17,7 @@
 	NSString *bsdName;
 	NSString *volumePath;
 	
-	BCDisk *disk;
+	BDDisk *disk;
 	NSString *systemName;
 	NSString *systemVersion;
 	NSString *systemBuildNumber;
@@ -29,13 +29,13 @@
 @property (copy) NSString *bsdName;
 @property (copy) NSString *volumePath;
 
-@property (retain) BCDisk *disk;
+@property (strong) BDDisk *disk;
 @property (copy) NSString *systemName;
 @property (copy) NSString *systemVersion;
 @property (copy) NSString *systemBuildNumber;
 @property (assign) BOOL legacyOS;
 
-+ (QBVolume *)volumeWithDisk:(BCDisk *)aDisk;
-- (id)initWithDisk:(BCDisk *)newDisk;
++ (QBVolume *)volumeWithDisk:(BDDisk *)aDisk;
+- (id)initWithDisk:(BDDisk *)newDisk;
 
 @end

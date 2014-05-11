@@ -8,7 +8,8 @@
  */
 
 #include <Carbon/Carbon.h>
-	
+#include "SendAppleEvent.h"
+
 OSStatus SendAppleEventToSystemProcess(AEEventID EventToSend)
 {
     AEAddressDesc targetDesc;

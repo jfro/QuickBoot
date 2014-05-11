@@ -29,6 +29,8 @@
 		0249E265191EEB370001ACD6 /* BCSystemInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0249E262191EEB370001ACD6 /* BCSystemInfo.m */; };
 		0249E268191EEB5D0001ACD6 /* NSApplication+BCAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0249E267191EEB5D0001ACD6 /* NSApplication+BCAdditions.m */; };
 		0249E26B191EEB970001ACD6 /* NSArray+BCAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0249E26A191EEB970001ACD6 /* NSArray+BCAdditions.m */; };
+		0249E271191EF2E00001ACD6 /* BDDisk.m in Sources */ = {isa = PBXBuildFile; fileRef = 0249E26E191EF2E00001ACD6 /* BDDisk.m */; };
+		0249E272191EF2E00001ACD6 /* BDDiskArbitrationSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 0249E270191EF2E00001ACD6 /* BDDiskArbitrationSession.m */; };
 		025D1889108A604C00D8995D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 025D1888108A604C00D8995D /* main.m */; };
 		027A9FEA0C467C7F000BBCE9 /* MainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 027A9FE90C467C7F000BBCE9 /* MainWindowController.m */; };
 		027AA02F0C468345000BBCE9 /* FMNSFileManagerAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 027AA02E0C468345000BBCE9 /* FMNSFileManagerAdditions.m */; };
@@ -40,8 +42,6 @@
 		029A43C815F705B100087FD1 /* QuickBoot-logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 029A43C715F705B100087FD1 /* QuickBoot-logo@2x.png */; };
 		029A43E815F77E8600087FD1 /* QuickBoot.iconset in Resources */ = {isa = PBXBuildFile; fileRef = 029A43E715F77E8600087FD1 /* QuickBoot.iconset */; };
 		02AC892F120F16CE0024A1A7 /* QuickBootHelper in Copy Helper */ = {isa = PBXBuildFile; fileRef = 025D1881108A5F8500D8995D /* QuickBootHelper */; };
-		02B3D257108A7C7C002C6453 /* BCDiskArbitration.m in Sources */ = {isa = PBXBuildFile; fileRef = 02B3D256108A7C7C002C6453 /* BCDiskArbitration.m */; };
-		02B3D2C2108A8BC3002C6453 /* BCDisk.m in Sources */ = {isa = PBXBuildFile; fileRef = 02B3D2C1108A8BC3002C6453 /* BCDisk.m */; };
 		02B40C760C4726AA00D4A0CD /* SendAppleEvent.c in Sources */ = {isa = PBXBuildFile; fileRef = 02B40C750C4726AA00D4A0CD /* SendAppleEvent.c */; };
 		02B40CCD0C47279400D4A0CD /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02B40CCC0C47279400D4A0CD /* Carbon.framework */; };
 		02B40CF10C47295400D4A0CD /* QBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 02B40CF00C47295400D4A0CD /* QBAppDelegate.m */; };
@@ -113,6 +113,10 @@
 		0249E267191EEB5D0001ACD6 /* NSApplication+BCAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSApplication+BCAdditions.m"; path = "Dependencies/NSApplication+BCAdditions.m"; sourceTree = "<group>"; };
 		0249E269191EEB970001ACD6 /* NSArray+BCAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSArray+BCAdditions.h"; path = "Dependencies/NSArray+BCAdditions.h"; sourceTree = "<group>"; };
 		0249E26A191EEB970001ACD6 /* NSArray+BCAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSArray+BCAdditions.m"; path = "Dependencies/NSArray+BCAdditions.m"; sourceTree = "<group>"; };
+		0249E26D191EF2E00001ACD6 /* BDDisk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BDDisk.h; path = Dependencies/ButteredDisk/BDDisk.h; sourceTree = "<group>"; };
+		0249E26E191EF2E00001ACD6 /* BDDisk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BDDisk.m; path = Dependencies/ButteredDisk/BDDisk.m; sourceTree = "<group>"; };
+		0249E26F191EF2E00001ACD6 /* BDDiskArbitrationSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BDDiskArbitrationSession.h; path = Dependencies/ButteredDisk/BDDiskArbitrationSession.h; sourceTree = "<group>"; };
+		0249E270191EF2E00001ACD6 /* BDDiskArbitrationSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BDDiskArbitrationSession.m; path = Dependencies/ButteredDisk/BDDiskArbitrationSession.m; sourceTree = "<group>"; };
 		025D1881108A5F8500D8995D /* QuickBootHelper */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = QuickBootHelper; sourceTree = BUILT_PRODUCTS_DIR; };
 		025D1888108A604C00D8995D /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		027A9FE80C467C7F000BBCE9 /* MainWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainWindowController.h; path = Source/MainWindowController.h; sourceTree = "<group>"; };
@@ -127,10 +131,6 @@
 		029A43C415F6E27300087FD1 /* StatusItemIconAlt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "StatusItemIconAlt@2x.png"; path = "Resources/StatusItemIconAlt@2x.png"; sourceTree = "<group>"; };
 		029A43C715F705B100087FD1 /* QuickBoot-logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "QuickBoot-logo@2x.png"; path = "Resources/QuickBoot-logo@2x.png"; sourceTree = "<group>"; };
 		029A43E715F77E8600087FD1 /* QuickBoot.iconset */ = {isa = PBXFileReference; lastKnownFileType = folder.iconset; name = QuickBoot.iconset; path = Resources/QuickBoot.iconset; sourceTree = "<group>"; };
-		02B3D255108A7C7C002C6453 /* BCDiskArbitration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BCDiskArbitration.h; path = Source/BCDiskArbitration.h; sourceTree = "<group>"; };
-		02B3D256108A7C7C002C6453 /* BCDiskArbitration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BCDiskArbitration.m; path = Source/BCDiskArbitration.m; sourceTree = "<group>"; };
-		02B3D2C0108A8BC3002C6453 /* BCDisk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BCDisk.h; path = Source/BCDisk.h; sourceTree = "<group>"; };
-		02B3D2C1108A8BC3002C6453 /* BCDisk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BCDisk.m; path = Source/BCDisk.m; sourceTree = "<group>"; };
 		02B40C750C4726AA00D4A0CD /* SendAppleEvent.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = SendAppleEvent.c; path = Source/SendAppleEvent.c; sourceTree = "<group>"; };
 		02B40CCC0C47279400D4A0CD /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
 		02B40CEF0C47295400D4A0CD /* QBAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QBAppDelegate.h; path = Source/QBAppDelegate.h; sourceTree = "<group>"; };
@@ -187,6 +187,10 @@
 				0249E267191EEB5D0001ACD6 /* NSApplication+BCAdditions.m */,
 				0249E269191EEB970001ACD6 /* NSArray+BCAdditions.h */,
 				0249E26A191EEB970001ACD6 /* NSArray+BCAdditions.m */,
+				0249E26D191EF2E00001ACD6 /* BDDisk.h */,
+				0249E26E191EF2E00001ACD6 /* BDDisk.m */,
+				0249E26F191EF2E00001ACD6 /* BDDiskArbitrationSession.h */,
+				0249E270191EF2E00001ACD6 /* BDDiskArbitrationSession.m */,
 				02B6B95D0FB3A48F000EC4B9 /* Utility */,
 			);
 			name = Dependencies;
@@ -207,7 +211,6 @@
 		02091EF413806132007A7A8B /* Disk Handling */ = {
 			isa = PBXGroup;
 			children = (
-				02B3D254108A7C4D002C6453 /* DiskArbitration */,
 				02B6B9450FB39FE1000EC4B9 /* QBVolumeManager.h */,
 				02B6B9460FB39FE1000EC4B9 /* QBVolumeManager.m */,
 				027C159C120E1AB80019BBF3 /* QBOSDetectOperation.h */,
@@ -249,17 +252,6 @@
 			);
 			name = QuickBootHelper;
 			path = Source/Helper;
-			sourceTree = "<group>";
-		};
-		02B3D254108A7C4D002C6453 /* DiskArbitration */ = {
-			isa = PBXGroup;
-			children = (
-				02B3D255108A7C7C002C6453 /* BCDiskArbitration.h */,
-				02B3D256108A7C7C002C6453 /* BCDiskArbitration.m */,
-				02B3D2C0108A8BC3002C6453 /* BCDisk.h */,
-				02B3D2C1108A8BC3002C6453 /* BCDisk.m */,
-			);
-			name = DiskArbitration;
 			sourceTree = "<group>";
 		};
 		02B6B95D0FB3A48F000EC4B9 /* Utility */ = {
@@ -508,18 +500,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0249E272191EF2E00001ACD6 /* BDDiskArbitrationSession.m in Sources */,
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
 				027A9FEA0C467C7F000BBCE9 /* MainWindowController.m in Sources */,
 				027AA02F0C468345000BBCE9 /* FMNSFileManagerAdditions.m in Sources */,
 				02B40C760C4726AA00D4A0CD /* SendAppleEvent.c in Sources */,
+				0249E271191EF2E00001ACD6 /* BDDisk.m in Sources */,
 				0249E263191EEB370001ACD6 /* BCAboutBox.m in Sources */,
 				0249E26B191EEB970001ACD6 /* NSArray+BCAdditions.m in Sources */,
 				02B40CF10C47295400D4A0CD /* QBAppDelegate.m in Sources */,
 				02B6B9470FB39FE1000EC4B9 /* QBVolumeManager.m in Sources */,
 				02B6B9C10FB3EBE9000EC4B9 /* QBPreferencesController.m in Sources */,
 				0249E268191EEB5D0001ACD6 /* NSApplication+BCAdditions.m in Sources */,
-				02B3D257108A7C7C002C6453 /* BCDiskArbitration.m in Sources */,
-				02B3D2C2108A8BC3002C6453 /* BCDisk.m in Sources */,
 				02412076120A40ED00EF7B5C /* QBVolume.m in Sources */,
 				027C159F120E1AB80019BBF3 /* QBOSDetectOperation.m in Sources */,
 				0249E265191EEB370001ACD6 /* BCSystemInfo.m in Sources */,
@@ -597,6 +589,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -618,6 +611,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
 				INSTALL_PATH = /usr/local/bin;
@@ -636,6 +630,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -683,7 +678,7 @@
 				GCC_VERSION = "";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
 				VALID_ARCHS = "i386 x86_64";
@@ -695,6 +690,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BC_SPARKLE_URL = "http://${UPDATE_HOST}/products/sparkleProfile/${PRODUCT_NAME}${UPDATE_BUILD}";
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Source/QuickBoot_Prefix.pch";
@@ -702,6 +698,7 @@
 				INFOPLIST_PREFIX_HEADER = "$(SRCROOT)/Source/InfoPlist.h";
 				INFOPLIST_PREPROCESS = YES;
 				INSTALL_PATH = "$(HOME)/Applications";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = QuickBoot;
 				UPDATE_BUILD = /beta;
 				UPDATE_HOST = "buttered-cat.com";
@@ -713,6 +710,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BC_SPARKLE_URL = "http://${UPDATE_HOST}/products/sparkleProfile/${PRODUCT_NAME}${UPDATE_BUILD}";
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -722,6 +720,7 @@
 				INFOPLIST_PREFIX_HEADER = "$(SRCROOT)/Source/InfoPlist.h";
 				INFOPLIST_PREPROCESS = YES;
 				INSTALL_PATH = "$(HOME)/Applications";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = QuickBoot;
 				UPDATE_BUILD = /beta;
 				UPDATE_HOST = "localhost:3000";
@@ -733,6 +732,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BC_SPARKLE_URL = "http://${UPDATE_HOST}/products/sparkleProfile/${PRODUCT_NAME}${UPDATE_BUILD}";
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEPLOYMENT_POSTPROCESSING = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
@@ -741,6 +741,7 @@
 				INFOPLIST_PREFIX_HEADER = "$(SRCROOT)/Source/InfoPlist.h";
 				INFOPLIST_PREPROCESS = YES;
 				INSTALL_PATH = "$(HOME)/Applications";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = QuickBoot;
 				STRIP_INSTALLED_PRODUCT = YES;
 				UPDATE_BUILD = "";
@@ -757,7 +758,7 @@
 				GCC_VERSION = "";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
@@ -775,7 +776,7 @@
 				GCC_VERSION = "";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
 				VALID_ARCHS = "i386 x86_64";

@@ -12,19 +12,12 @@
 @class QBVolumeManager;
 
 @interface MainWindowController : NSWindowController
-{
-	NSMutableArray *volumes;
-	IBOutlet NSArrayController *volumesController;
-	IBOutlet NSMenu *statusMenu;
-	QBVolumeManager *volumeManager;
-	NSButton *bootLaterButton;
-	NSButton *bootNowButton;
-}
-@property (assign) IBOutlet NSButton *bootLaterButton;
-@property (assign) IBOutlet NSButton *bootNowButton;
 
-- (QBVolumeManager *)volumeManager;
-- (void)setVolumeManager:(QBVolumeManager *)volManager;
+@property (strong) IBOutlet NSArrayController *volumesController;
+@property (strong) IBOutlet NSMenu *statusMenu;
+@property (strong) IBOutlet NSButton *bootLaterButton;
+@property (strong) IBOutlet NSButton *bootNowButton;
+@property (strong, nonatomic) QBVolumeManager *volumeManager;
 
 - (void)refreshStatusMenu;
 

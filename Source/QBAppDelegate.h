@@ -13,15 +13,14 @@
 @class MainWindowController;
 @class BCAboutBox;
 
-@interface QBAppDelegate : NSObject {
-	NSStatusItem *statusItem;
-	IBOutlet NSMenu *statusMenu;
-	
-	IBOutlet MainWindowController *mainWindowController;
-	QBVolumeManager *volumeManager;
-	QBPreferencesController *preferencesController;
-	BCAboutBox *aboutBox;
-}
+@interface QBAppDelegate : NSObject
+
+@property (strong) NSStatusItem *statusItem;
+@property (strong) QBVolumeManager *volumeManager;
+@property (strong) QBPreferencesController *preferencesController;
+@property (strong) BCAboutBox *aboutBox;
+@property (strong) IBOutlet NSMenu *statusMenu;
+@property (strong) IBOutlet MainWindowController *mainWindowController;
 
 - (void)setupStatusItem;
 

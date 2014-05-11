@@ -15,12 +15,6 @@
 
 @implementation BCAboutBox
 
-@synthesize applicationName;
-@synthesize versionString;
-@synthesize copyright;
-@synthesize logoImageName;
-@synthesize creditsAttributedString;
-
 + (NSSet *)keyPathsForValuesAffectingValueForKey:(NSString *)key {
 	if([key isEqualToString:@"logoImage"]) {
 		return [NSSet setWithObject:@"logoImageName"];
@@ -31,29 +25,18 @@
 - (id)init
 {
 	if((self = [super initWithWindowNibName:@"BCAboutBox"])) {
-//		NSDictionary *info = [[NSBundle mainBundle] infoDictionary];
-		
 		self.applicationName = [NSApp infoValueForKey:(NSString *)kCFBundleNameKey];
 		self.versionString = [NSString stringWithFormat:NSLocalizedString(@"Version %@ (%@)", @"About box version string"), [NSApp infoValueForKey:@"CFBundleShortVersionString"], [NSApp infoValueForKey:(NSString *)kCFBundleVersionKey]];
 		self.copyright = [NSApp infoValueForKey:@"NSHumanReadableCopyright"];
 		NSString *creditsFile = [[NSBundle mainBundle] pathForResource:@"Credits" ofType:@"rtf"];
 		if(creditsFile) {
 			NSData *data = [NSData dataWithContentsOfFile:creditsFile];
-			self.creditsAttributedString = [[[NSAttributedString alloc] initWithRTF:data documentAttributes:nil] autorelease];
+			self.creditsAttributedString = [[NSAttributedString alloc] initWithRTF:data documentAttributes:nil];
 		}
 	}
 	return self;
 }
 
-- (void)dealloc
-{
-	[applicationName release];
-	[versionString release];
-	[copyright release];
-	[logoImageName release];
-	[creditsAttributedString release];
-    [super dealloc];
-}
 
 - (void)windowDidLoad
 {
@@ -85,9 +68,8 @@
 
 - (void)setLogoImageName:(NSString *)newName
 {
-	if(logoImageName != newName) {
-		[logoImageName release];
-		logoImageName = [newName copy];
+	if(_logoImageName != newName) {
+		_logoImageName = [newName copy];
 		[self updateWindowSize];
 	}
 }

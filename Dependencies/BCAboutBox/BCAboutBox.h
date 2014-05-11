@@ -11,12 +11,6 @@
 
 @interface BCAboutBox : NSWindowController {
 @private
-	NSString *applicationName;
-	NSString *versionString;
-	NSString *copyright;
-	NSString *logoImageName;
-	NSAttributedString *creditsAttributedString;
-	
 	IBOutlet NSImageView *logoView;
 }
 

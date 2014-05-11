@@ -383,6 +383,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0249E288191F1CBE0001ACD6 /* Build configuration list for PBXNativeTarget "com.buttered-cat.QuickBootHelper" */;
 			buildPhases = (
+				0249E290191F2C320001ACD6 /* Prepare Plist */,
 				0249E27A191F1CBE0001ACD6 /* Sources */,
 				0249E27B191F1CBE0001ACD6 /* Frameworks */,
 				0249E27C191F1CBE0001ACD6 /* CopyFiles */,
@@ -400,6 +401,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "QuickBoot" */;
 			buildPhases = (
+				0249E291191F2FFF0001ACD6 /* Tweak Info.plist */,
 				8D1107290486CEB800E47090 /* Resources */,
 				8D11072C0486CEB800E47090 /* Sources */,
 				8D11072E0486CEB800E47090 /* Frameworks */,
@@ -486,6 +488,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "Scripts/re-sign-frameworks.rb \"${CODESIGNING_FOLDER_PATH}\" \"${CODE_SIGN_IDENTITY}\"";
+			showEnvVarsInLog = 0;
+		};
+		0249E290191F2C320001ACD6 /* Prepare Plist */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Source/Helper/QuickBootHelper-info.plist",
+			);
+			name = "Prepare Plist";
+			outputPaths = (
+				"$(DERIVED_SOURCES_DIR)/QuickBootHelper-info.plist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "ruby ${SRCROOT}/Scripts/update-identities.rb \"${CODE_SIGN_IDENTITY}\" \"${SRCROOT}/Source/Helper/QuickBootHelper-info.plist\" \"${DERIVED_SOURCES_DIR}/QuickBootHelper-info.plist\"\n";
+		};
+		0249E291191F2FFF0001ACD6 /* Tweak Info.plist */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Resources/Info.plist",
+			);
+			name = "Tweak Info.plist";
+			outputPaths = (
+				"$(DERIVED_SOURCES_DIR)/QuickBoot-Info.plist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "ruby ${SRCROOT}/Scripts/update-identities.rb \"${CODE_SIGN_IDENTITY}\" \"${SRCROOT}/Resources/Info.plist\" \"${DERIVED_SOURCES_DIR}/QuickBoot-Info.plist\"";
 			showEnvVarsInLog = 0;
 		};
 		02D46CA515D0B4C3001DC06C /* ShellScript */ = {
@@ -644,11 +679,11 @@
 					"-sectcreate",
 					__TEXT,
 					__info_plist,
-					"Source/Helper/QuickBootHelper-Info.plist",
+					"${DERIVED_SOURCES_DIR}/QuickBootHelper-info.plist",
 					"-sectcreate",
 					__TEXT,
 					__launchd_plist,
-					"Source/Helper/QuickBootHelper-Launchd.plist",
+					"Source/Helper/QuickBootHelper-launchd.plist",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -690,11 +725,11 @@
 					"-sectcreate",
 					__TEXT,
 					__info_plist,
-					"Source/Helper/QuickBootHelper-Info.plist",
+					"${DERIVED_SOURCES_DIR}/QuickBootHelper-info.plist",
 					"-sectcreate",
 					__TEXT,
 					__launchd_plist,
-					"Source/Helper/QuickBootHelper-Launchd.plist",
+					"Source/Helper/QuickBootHelper-launchd.plist",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -736,11 +771,11 @@
 					"-sectcreate",
 					__TEXT,
 					__info_plist,
-					"Source/Helper/QuickBootHelper-Info.plist",
+					"${DERIVED_SOURCES_DIR}/QuickBootHelper-info.plist",
 					"-sectcreate",
 					__TEXT,
 					__launchd_plist,
-					"Source/Helper/QuickBootHelper-Launchd.plist",
+					"Source/Helper/QuickBootHelper-launchd.plist",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -790,9 +825,10 @@
 				BC_SPARKLE_URL = "http://${UPDATE_HOST}/products/sparkleProfile/${PRODUCT_NAME}${UPDATE_BUILD}";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Source/QuickBoot_Prefix.pch";
-				INFOPLIST_FILE = Resources/Info.plist;
+				INFOPLIST_FILE = "${DERIVED_SOURCES_DIR}/QuickBoot-Info.plist";
 				INFOPLIST_PREFIX_HEADER = "$(SRCROOT)/Source/InfoPlist.h";
 				INFOPLIST_PREPROCESS = YES;
 				INSTALL_PATH = "$(HOME)/Applications";
@@ -814,7 +850,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Source/QuickBoot_Prefix.pch";
-				INFOPLIST_FILE = Resources/Info.plist;
+				INFOPLIST_FILE = "${DERIVED_SOURCES_DIR}/QuickBoot-Info.plist";
 				INFOPLIST_PREFIX_HEADER = "$(SRCROOT)/Source/InfoPlist.h";
 				INFOPLIST_PREPROCESS = YES;
 				INSTALL_PATH = "$(HOME)/Applications";
@@ -832,10 +868,11 @@
 				BC_SPARKLE_URL = "http://${UPDATE_HOST}/products/sparkleProfile/${PRODUCT_NAME}${UPDATE_BUILD}";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
 				DEPLOYMENT_POSTPROCESSING = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Source/QuickBoot_Prefix.pch";
-				INFOPLIST_FILE = Resources/Info.plist;
+				INFOPLIST_FILE = "${DERIVED_SOURCES_DIR}/QuickBoot-Info.plist";
 				INFOPLIST_PREFIX_HEADER = "$(SRCROOT)/Source/InfoPlist.h";
 				INFOPLIST_PREPROCESS = YES;
 				INSTALL_PATH = "$(HOME)/Applications";
@@ -893,6 +930,7 @@
 				0249E28B191F1CBE0001ACD6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		02D46CA115D0B468001DC06C /* Build configuration list for PBXAggregateTarget "GenGitVersion" */ = {
 			isa = XCConfigurationList;

@@ -12,7 +12,7 @@
 	<string>1.0.2</string>
 	<key>SMAuthorizedClients</key>
 	<array>
-		<string>identifier &quot;com.buttered-cat.QuickBoot&quot; and certificate leaf[subject.CN] = &quot;Developer ID Application: Jeremy Knope&quot;</string>
+		<string>identifier &quot;com.buttered-cat.QuickBoot&quot; and certificate leaf[subject.CN] = &quot;BC_CODE_SIGNING_IDENTITY&quot;</string>
 	</array>
 </dict>
 </plist>

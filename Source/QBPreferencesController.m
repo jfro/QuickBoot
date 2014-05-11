@@ -7,7 +7,7 @@
 //
 
 #import "QBPreferencesController.h"
-#import <BCAppKit/BCSystemInfo.h>
+#import "BCSystemInfo.h"
 #import "QBAppDelegate.h"
 
 
@@ -25,7 +25,6 @@
 - (void)dealloc
 {
 	CFRelease(loginItems);
-	[super dealloc];
 }
 
 - (IBAction)toggleShowBuildNumber:(id)sender
@@ -60,9 +59,9 @@
 		CFURLRef urlToQB = CFURLCreateWithFileSystemPath(kCFAllocatorDefault, (CFStringRef)pathToQB, kCFURLPOSIXPathStyle, true);
 		
 		UInt32 seed = 0U;
-		NSArray *currentLoginItems = [NSMakeCollectable(LSSharedFileListCopySnapshot(loginItems, &seed)) autorelease];
+		NSArray *currentLoginItems = CFBridgingRelease(LSSharedFileListCopySnapshot(loginItems, &seed));
 		for (id itemObject in currentLoginItems) {
-			LSSharedFileListItemRef item = (LSSharedFileListItemRef)itemObject;
+			LSSharedFileListItemRef item = (__bridge LSSharedFileListItemRef)itemObject;
 			
 			UInt32 resolutionFlags = kLSSharedFileListNoUserInteraction | kLSSharedFileListDoNotMountVolumes;
 			CFURLRef URL = NULL;
@@ -89,13 +88,13 @@
 
 - (void) setStartAtLogin:(NSString *)path enabled:(BOOL)enabled {
 	OSStatus status;
-	CFURLRef URLToToggle = (CFURLRef)[NSURL fileURLWithPath:path];
+	CFURLRef URLToToggle = (__bridge CFURLRef)[NSURL fileURLWithPath:path];
 	LSSharedFileListItemRef existingItem = NULL;
 	
 	UInt32 seed = 0U;
-	NSArray *currentLoginItems = [NSMakeCollectable(LSSharedFileListCopySnapshot(loginItems, &seed)) autorelease];
+	NSArray *currentLoginItems = CFBridgingRelease(LSSharedFileListCopySnapshot(loginItems, &seed));
 	for (id itemObject in currentLoginItems) {
-		LSSharedFileListItemRef item = (LSSharedFileListItemRef)itemObject;
+		LSSharedFileListItemRef item = (__bridge LSSharedFileListItemRef)itemObject;
 		
 		UInt32 resolutionFlags = kLSSharedFileListNoUserInteraction | kLSSharedFileListDoNotMountVolumes;
 		CFURLRef URL = NULL;
@@ -127,7 +126,7 @@
 				icon = NULL;
 		}
 		
-		LSSharedFileListInsertItemURL(loginItems, kLSSharedFileListItemBeforeFirst, (CFStringRef)displayName, icon, URLToToggle, /*propertiesToSet*/ NULL, /*propertiesToClear*/ NULL);
+		LSSharedFileListInsertItemURL(loginItems, kLSSharedFileListItemBeforeFirst, (__bridge CFStringRef)displayName, icon, URLToToggle, /*propertiesToSet*/ NULL, /*propertiesToClear*/ NULL);
 	} else if (!enabled && (existingItem != NULL))
 		LSSharedFileListItemRemove(loginItems, existingItem);
 }

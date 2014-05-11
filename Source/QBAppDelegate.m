@@ -11,8 +11,8 @@
 #import "QBPreferencesController.h"
 #import "MainWindowController.h"
 #import <Carbon/Carbon.h>
-#import <BCAppKit/BCSystemInfo.h>
-#import <BCAppKit/BCAboutBox.h>
+#import "BCSystemInfo.h"
+#import "BCAboutBox.h"
 
 @implementation QBAppDelegate
 
@@ -39,7 +39,6 @@
 		if(statusItem)
 		{
 			[[NSStatusBar systemStatusBar] removeStatusItem:statusItem];
-			[statusItem release];
 			statusItem = nil;
 		}
 		else
@@ -56,12 +55,10 @@
 	if(statusItem)
 	{
 		[[NSStatusBar systemStatusBar] removeStatusItem:statusItem];
-		[statusItem release];
 		statusItem = nil;
 	}
 	
 	statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:24.0f];
-	[statusItem retain];
 	[statusItem setImage:[NSImage imageNamed:@"StatusItemIcon"]];
 	[statusItem setAlternateImage:[NSImage imageNamed:@"StatusItemIconAlt"]];
 	[statusItem setHighlightMode:YES];
@@ -92,12 +89,8 @@
 
 - (void)dealloc
 {
-	[statusItem release];
-	[volumeManager release];
-	[preferencesController release];
 	[[NSUserDefaultsController sharedUserDefaultsController] removeObserver:self forKeyPath:@"values.ShowStatusIcon"];
 //	[[NSUserDefaultsController sharedUserDefaultsController] removeObserver:self forKeyPath:@"values.ShowIconInDock"];
-	[super dealloc];
 }
 
 - (IBAction)showAboutWindow:(id)sender

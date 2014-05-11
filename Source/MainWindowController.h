@@ -17,11 +17,11 @@
 	IBOutlet NSArrayController *volumesController;
 	IBOutlet NSMenu *statusMenu;
 	QBVolumeManager *volumeManager;
-	NSButton *bootLaterButton;
-	NSButton *bootNowButton;
+	NSButton *__unsafe_unretained bootLaterButton;
+	NSButton *__unsafe_unretained bootNowButton;
 }
-@property (assign) IBOutlet NSButton *bootLaterButton;
-@property (assign) IBOutlet NSButton *bootNowButton;
+@property (unsafe_unretained) IBOutlet NSButton *bootLaterButton;
+@property (unsafe_unretained) IBOutlet NSButton *bootNowButton;
 
 - (QBVolumeManager *)volumeManager;
 - (void)setVolumeManager:(QBVolumeManager *)volManager;

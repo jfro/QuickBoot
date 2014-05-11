@@ -14,12 +14,12 @@
 @synthesize disk, systemName, legacyOS, name, icon, bsdName, volumePath;
 @synthesize systemVersion, systemBuildNumber;
 
-+ (QBVolume *)volumeWithDisk:(BCDisk *)aDisk
++ (QBVolume *)volumeWithDisk:(BDDisk *)aDisk
 {
-	return [[[QBVolume alloc] initWithDisk:aDisk] autorelease];
+	return [[QBVolume alloc] initWithDisk:aDisk];
 }
 
-- (id)initWithDisk:(BCDisk *)newDisk
+- (id)initWithDisk:(BDDisk *)newDisk
 {
 	if((self = [super init]))
 	{
@@ -34,17 +34,6 @@
 	return self;
 }
 
-- (void)dealloc
-{
-	[disk release];
-	[systemName release];
-	[name release];
-	[volumePath release];
-	[icon release];
-	[systemVersion release];
-	[systemBuildNumber release];
-	[super dealloc];
-}
 
 - (NSString *)description
 {

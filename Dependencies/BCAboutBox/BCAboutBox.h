@@ -24,7 +24,7 @@
 @property (copy, nonatomic) NSString *versionString;
 @property (copy, nonatomic) NSString *copyright;
 @property (copy, nonatomic) NSString *logoImageName;
-@property (readonly) NSImage *logoImage;
+@property (unsafe_unretained, readonly) NSImage *logoImage;
 @property (copy, nonatomic) NSAttributedString *creditsAttributedString;
 
 - (IBAction)display:(id)sender;

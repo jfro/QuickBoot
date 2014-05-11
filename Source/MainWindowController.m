@@ -13,8 +13,8 @@
 #import "QBVolumeManager.h"
 #import "SendAppleEvent.h"
 #import "QBVolume.h"
-#import "BCDisk.h"
-#import <BCAppKit/NSArray+BCAdditions.h>
+#import "BDDisk.h"
+#import "NSArray+BCAdditions.h"
 
 @interface MainWindowController (Private)
 - (BOOL)restart;
@@ -43,8 +43,6 @@ void *MainWindowControllerKVOContext = &MainWindowControllerKVOContext;
 {
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 	[volumeManager removeObserver:self forKeyPath:@"volumes"];
-	[volumeManager release];
-	[super dealloc];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
@@ -85,8 +83,6 @@ void *MainWindowControllerKVOContext = &MainWindowControllerKVOContext;
 {
 	[[self volumeManager] removeObserver:self forKeyPath:@"volumes"];
 	[self willChangeValueForKey:@"volumeManager"];
-	[volManager retain];
-	[volumeManager release];
 	volumeManager = volManager;
 	[self didChangeValueForKey:@"volumeManager"];
 	[[self volumeManager] addObserver:self forKeyPath:@"volumes" options:NSKeyValueObservingOptionNew context:MainWindowControllerKVOContext];
@@ -118,9 +114,8 @@ void *MainWindowControllerKVOContext = &MainWindowControllerKVOContext;
 		//NSImage *image = [[NSImage alloc] initWithData:[vol objectForKey:@"icon"]];
 		NSImage *image = [vol.disk.icon copy];
 		[image setSize:NSMakeSize(16.0, 16.0)];
-		[item setImage:[image autorelease]];
+		[item setImage:image];
 		[statusMenu insertItem:item atIndex:1];
-		[item release];
 	}
 }
 

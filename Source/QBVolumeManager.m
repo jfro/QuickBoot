@@ -7,17 +7,17 @@
 //
 
 #import "QBVolumeManager.h"
-#import "FMNSFileManagerAdditions.h"
-#import <BCAppKit/BCSystemInfo.h>
+//#import "FMNSFileManagerAdditions.h"
+#import "BCSystemInfo.h"
 #import <Security/Security.h>
 #import "QBVolume.h"
 
-@interface QBVolumeManager()
+@interface QBVolumeManager() <BDDiskArbitrationSessionDelegate>
 - (void)checkHelperPermissions;
 - (NSString *)helperPath;
 - (OSStatus)fixPermissions;
 - (BOOL)passwordlessBootingEnabled;
-@property (nonatomic, strong) BCDisk *efiDisk;
+@property (nonatomic, strong) BDDisk *efiDisk;
 @end
 
 
@@ -26,8 +26,8 @@
 {
 	if((self = [super init]))
 	{
-		volumes = [[NSMutableArray array] retain];
-		diskArb = [[BCDiskArbitration alloc] initWithDelegate:self];
+		volumes = [NSMutableArray array];
+		diskArb = [[BDDiskArbitrationSession alloc] initWithDelegate:self];
 		volumeCheckQueue = [[NSOperationQueue alloc] init];
 		
 		[[NSNotificationCenter defaultCenter] addObserver:self
@@ -49,14 +49,10 @@
 {
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 	
-	[volumes release];
 	volumes = nil;
-	[diskArb release];
 	diskArb = nil;
-	[volumeCheckQueue release];
 	volumeCheckQueue = nil;
 	
-	[super dealloc];
 }
 
 #pragma mark -
@@ -197,7 +193,6 @@ cleanup:
 	[self willChangeValueForKey:@"volumes"];
 	if(newVolumes != volumes)
 	{
-		[volumes release];
 		volumes = [newVolumes mutableCopy];
 	}
 	[self didChangeValueForKey:@"volumes"];
@@ -208,7 +203,7 @@ cleanup:
 	return volumes;
 }
 
-- (BCDisk *)currentBootDisk
+- (BDDisk *)currentBootDisk
 {
 	// do we use bless or maybe ask nvram
 	return nil;
@@ -226,7 +221,7 @@ cleanup:
 	}
 }
 
-- (void)diskDidAppear:(BCDisk *)disk
+- (void)diskDidAppear:(BDDisk *)disk
 {
 	if([[disk volumeName] isEqualToString:@"EFI"]) {
 		self.efiDisk = disk;
@@ -253,7 +248,7 @@ cleanup:
 //		NSLog(@"Ignored disk: %@", disk);
 }
 
-- (void)diskDidDisappear:(BCDisk *)disk
+- (void)diskDidDisappear:(BDDisk *)disk
 {
 //	NSLog(@"Disk disappeared: %@ - %lu", disk, (unsigned long)[disk hash]);
 	//NSDictionary *info = [note userInfo];
@@ -272,7 +267,7 @@ cleanup:
 	QBVolumeManagerError returnValue = kQBVolumeManagerSuccess;
     
     BOOL useLegacyMode = [[NSUserDefaults standardUserDefaults] boolForKey:@"UseLegacyMode"];
-    BCDisk *disk = volume.disk;
+    BDDisk *disk = volume.disk;
     if(volume.legacyOS && !useLegacyMode && self.efiDisk) { // since we flag windows as legacy right now
         disk = self.efiDisk;
     }
@@ -288,7 +283,6 @@ cleanup:
 		[helperTask launch];
 		[helperTask waitUntilExit];
 		returnValue = [helperTask terminationStatus];
-		[helperTask release];
 	}
 	else
 	{

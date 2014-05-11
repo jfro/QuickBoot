@@ -1,0 +1,3 @@
+[submodule "Dependencies/ButteredDisk"]
+	path = Dependencies/ButteredDisk
+	url = git@github.com:jfro/ButteredDisk.git

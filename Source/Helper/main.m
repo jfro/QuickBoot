@@ -15,63 +15,64 @@
 int main(int argc, char *argv[])
 {
 	int ret = 0;
-	
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    
+    @autoreleasepool {
+        
+        NSArray *args = [[NSProcessInfo processInfo] arguments];
+        
+        // parse args
+        NSString *mountPath = nil;
+        BOOL isLegacy = NO;
+        if([args count] == 2)
+            args = [args arrayByAddingObject:@"--noop"];
+        for(NSString *arg in [args subarrayWithRange:NSMakeRange(1, 2)])
+        {
+            if([arg isEqualToString:@"--legacy"])
+            {
+                isLegacy = YES;
+                continue;
+            }
+            if(!([arg length] >= 2 && [[arg substringToIndex:2] isEqualToString:@"--"]))
+            {
+                mountPath = arg;
+                continue;
+            }
+        }
+        //NSLog(@"Booting: %@ legacy: %i", mountPath, isLegacy);
+        if(!mountPath)
+        {
+            NSLog(@"No device path specified");
+            ret = kQBVolumeManagerUnknownError;
+            goto proc_exit;
+        }
+        //goto proc_exit;
+        
+        NSMutableArray *blessArguments = [NSMutableArray array];
+        [blessArguments addObject:@"--device"];
+        [blessArguments addObject:mountPath];
+        [blessArguments addObject:@"--nextonly"];
+        [blessArguments addObject:@"--setBoot"];
+        if(isLegacy)
+            [blessArguments addObject:@"--legacy"];
+        
+        NSTask *task = [[NSTask alloc] init];
+        [task setLaunchPath:@"/usr/sbin/bless"];
+        [task setArguments:blessArguments];
+        
+        [task launch];
+        [task waitUntilExit];
+        
+        int status = [task terminationStatus];
+        
+        if(status != 0)
+        {
+            NSLog(@"Failed to set boot: %i", status);
+            ret = kQBVolumeManagerSetBootError;
+        }
 
-	NSArray *args = [[NSProcessInfo processInfo] arguments];
-	
-	// parse args
-	NSString *mountPath = nil;
-	BOOL isLegacy = NO;
-	if([args count] == 2)
-		args = [args arrayByAddingObject:@"--noop"];
-	for(NSString *arg in [args subarrayWithRange:NSMakeRange(1, 2)])
-	{
-		if([arg isEqualToString:@"--legacy"])
-		{
-			isLegacy = YES;
-			continue;
-		}
-		if(!([arg length] >= 2 && [[arg substringToIndex:2] isEqualToString:@"--"]))
-		{
-			mountPath = arg;
-			continue;
-		}
-	}
-	//NSLog(@"Booting: %@ legacy: %i", mountPath, isLegacy);
-	if(!mountPath)
-	{
-		NSLog(@"No device path specified");
-		ret = kQBVolumeManagerUnknownError;
-		goto proc_exit;
-	}
-	//goto proc_exit;
-	
-	NSMutableArray *blessArguments = [NSMutableArray array];
-	[blessArguments addObject:@"--device"];
-	[blessArguments addObject:mountPath];
-	[blessArguments addObject:@"--nextonly"];
-	[blessArguments addObject:@"--setBoot"];
-	if(isLegacy)
-		[blessArguments addObject:@"--legacy"];
-	
-	NSTask *task = [[NSTask alloc] init];
-	[task setLaunchPath:@"/usr/sbin/bless"];
-	[task setArguments:blessArguments];
-	
-	[task launch];
-	[task waitUntilExit];
-	
-	int status = [task terminationStatus];
-	
-	if(status != 0)
-	{
-		NSLog(@"Failed to set boot: %i", status);
-		ret = kQBVolumeManagerSetBootError;
-	}
-	[task release];
+    }
 	
 proc_exit:
-	[pool release];
+
 	return ret;
 }

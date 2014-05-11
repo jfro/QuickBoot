@@ -7,7 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "BCDiskArbitration.h"
+#import "BDDiskArbitrationSession.h"
 #import "QBOSDetectOperation.h"
 
 typedef enum {
@@ -20,10 +20,10 @@ typedef enum {
 } QBVolumeManagerError;
 
 
-@interface QBVolumeManager : NSObject<BCDiskArbitrationDelegate, QBOSDetectOperationDelegate>
+@interface QBVolumeManager : NSObject<BDDiskArbitrationSessionDelegate, QBOSDetectOperationDelegate>
 {
 	NSMutableArray *volumes;
-	BCDiskArbitration *diskArb;
+	BDDiskArbitrationSession *diskArb;
 	
 	NSOperationQueue *volumeCheckQueue;
 }
@@ -31,7 +31,7 @@ typedef enum {
 - (void)setVolumes:(NSArray *)newVolumes;
 - (NSArray *)volumes;
 
-- (BCDisk *)currentBootDisk;
+- (BDDisk *)currentBootDisk;
 
 //- (NSDictionary *)volumeDictionaryAtPath:(NSString *)path;
 //- (void)scanVolumes;

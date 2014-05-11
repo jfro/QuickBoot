@@ -39,21 +39,12 @@
 		NSString *creditsFile = [[NSBundle mainBundle] pathForResource:@"Credits" ofType:@"rtf"];
 		if(creditsFile) {
 			NSData *data = [NSData dataWithContentsOfFile:creditsFile];
-			self.creditsAttributedString = [[[NSAttributedString alloc] initWithRTF:data documentAttributes:nil] autorelease];
+			self.creditsAttributedString = [[NSAttributedString alloc] initWithRTF:data documentAttributes:nil];
 		}
 	}
 	return self;
 }
 
-- (void)dealloc
-{
-	[applicationName release];
-	[versionString release];
-	[copyright release];
-	[logoImageName release];
-	[creditsAttributedString release];
-    [super dealloc];
-}
 
 - (void)windowDidLoad
 {
@@ -86,7 +77,6 @@
 - (void)setLogoImageName:(NSString *)newName
 {
 	if(logoImageName != newName) {
-		[logoImageName release];
 		logoImageName = [newName copy];
 		[self updateWindowSize];
 	}

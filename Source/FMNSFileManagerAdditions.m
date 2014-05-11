@@ -102,7 +102,7 @@
 			}
 		}
 	}
-	return (NSData *)data;
+	return (NSData *)CFBridgingRelease(data);
 }
 
 + (NSData *)copyIconDataForPath:(NSString *)path {
@@ -111,7 +111,7 @@
 	//false is probably safest, and is harmless when the object really is a directory.
 	CFURLRef URL = CFURLCreateWithFileSystemPath(kCFAllocatorDefault, (CFStringRef)path, kCFURLPOSIXPathStyle, /*isDirectory*/ false);
 	if (URL) {
-		data = [NSFileManager copyIconDataForUrl:(NSURL *)URL];
+		data = [NSFileManager copyIconDataForUrl:(__bridge NSURL *)URL];
 		CFRelease(URL);
 	}
 

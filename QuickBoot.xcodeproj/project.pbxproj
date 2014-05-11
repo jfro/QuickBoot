@@ -33,7 +33,6 @@
 		0249E272191EF2E00001ACD6 /* BDDiskArbitrationSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 0249E270191EF2E00001ACD6 /* BDDiskArbitrationSession.m */; };
 		025D1889108A604C00D8995D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 025D1888108A604C00D8995D /* main.m */; };
 		027A9FEA0C467C7F000BBCE9 /* MainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 027A9FE90C467C7F000BBCE9 /* MainWindowController.m */; };
-		027AA02F0C468345000BBCE9 /* FMNSFileManagerAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 027AA02E0C468345000BBCE9 /* FMNSFileManagerAdditions.m */; };
 		027AA0320C468374000BBCE9 /* DiskArbitration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 027AA0310C468374000BBCE9 /* DiskArbitration.framework */; };
 		027AA11E0C472078000BBCE9 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 027AA11D0C472078000BBCE9 /* Security.framework */; };
 		027C159F120E1AB80019BBF3 /* QBOSDetectOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 027C159D120E1AB80019BBF3 /* QBOSDetectOperation.m */; };
@@ -121,8 +120,6 @@
 		025D1888108A604C00D8995D /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		027A9FE80C467C7F000BBCE9 /* MainWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainWindowController.h; path = Source/MainWindowController.h; sourceTree = "<group>"; };
 		027A9FE90C467C7F000BBCE9 /* MainWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainWindowController.m; path = Source/MainWindowController.m; sourceTree = "<group>"; };
-		027AA02D0C468345000BBCE9 /* FMNSFileManagerAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMNSFileManagerAdditions.h; path = Source/FMNSFileManagerAdditions.h; sourceTree = "<group>"; };
-		027AA02E0C468345000BBCE9 /* FMNSFileManagerAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMNSFileManagerAdditions.m; path = Source/FMNSFileManagerAdditions.m; sourceTree = "<group>"; };
 		027AA0310C468374000BBCE9 /* DiskArbitration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DiskArbitration.framework; path = /System/Library/Frameworks/DiskArbitration.framework; sourceTree = "<absolute>"; };
 		027AA11D0C472078000BBCE9 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = /System/Library/Frameworks/Security.framework; sourceTree = "<absolute>"; };
 		027C159C120E1AB80019BBF3 /* QBOSDetectOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QBOSDetectOperation.h; path = Source/QBOSDetectOperation.h; sourceTree = "<group>"; };
@@ -259,8 +256,6 @@
 			children = (
 				024120AC120A451F00EF7B5C /* SendAppleEvent.h */,
 				02B40C750C4726AA00D4A0CD /* SendAppleEvent.c */,
-				027AA02D0C468345000BBCE9 /* FMNSFileManagerAdditions.h */,
-				027AA02E0C468345000BBCE9 /* FMNSFileManagerAdditions.m */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -503,7 +498,6 @@
 				0249E272191EF2E00001ACD6 /* BDDiskArbitrationSession.m in Sources */,
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
 				027A9FEA0C467C7F000BBCE9 /* MainWindowController.m in Sources */,
-				027AA02F0C468345000BBCE9 /* FMNSFileManagerAdditions.m in Sources */,
 				02B40C760C4726AA00D4A0CD /* SendAppleEvent.c in Sources */,
 				0249E271191EF2E00001ACD6 /* BDDisk.m in Sources */,
 				0249E263191EEB370001ACD6 /* BCAboutBox.m in Sources */,

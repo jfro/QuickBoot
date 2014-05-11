@@ -8,7 +8,6 @@
  */
  
 #import "MainWindowController.h"
-#import "FMNSFileManagerAdditions.h"
 #import <Security/Security.h>
 #import "QBVolumeManager.h"
 #import "SendAppleEvent.h"

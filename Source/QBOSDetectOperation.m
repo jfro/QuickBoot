@@ -10,7 +10,6 @@
 #import "QBVolume.h"
 
 @implementation QBOSDetectOperation
-@synthesize delegate, volume;
 
 + (QBOSDetectOperation *)detectOperationWithVolume:(QBVolume *)aVolume
 {
@@ -36,16 +35,16 @@
 		NSString *osBuild = nil;
 		BOOL legacy = YES;
 		// I read this wasn't best but this is for a non-running system
-		NSString *versionPath = [[[[volume.disk.volumePath stringByAppendingPathComponent:@"System"]
+		NSString *versionPath = [[[[self.volume.disk.volumePath stringByAppendingPathComponent:@"System"]
 								   stringByAppendingPathComponent:@"Library"]
 								  stringByAppendingPathComponent:@"CoreServices"]
 								 stringByAppendingPathComponent:@"SystemVersion.plist"];
-		NSString *serverVersionPath = [[[[volume.disk.volumePath stringByAppendingPathComponent:@"System"]
+		NSString *serverVersionPath = [[[[self.volume.disk.volumePath stringByAppendingPathComponent:@"System"]
 																   stringByAppendingPathComponent:@"Library"]
 																  stringByAppendingPathComponent:@"CoreServices"]
 																 stringByAppendingPathComponent:@"ServerVersion.plist"];
 		BOOL isDir;
-		if([fileManager fileExistsAtPath:[volume.disk.volumePath stringByAppendingPathComponent:@"Windows"] isDirectory:&isDir])
+		if([fileManager fileExistsAtPath:[self.volume.disk.volumePath stringByAppendingPathComponent:@"Windows"] isDirectory:&isDir])
 		{
 			if(isDir)
 			{
@@ -82,13 +81,14 @@
 		
 	}
 	
+    id <QBOSDetectOperationDelegate>delegate = self.delegate;
 	
-	if([self.delegate respondsToSelector:@selector(detectOperation:finishedScanningVolume:)])
-	{
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.delegate detectOperation:self finishedScanningVolume:volume];
-        });
-	}
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if([delegate respondsToSelector:@selector(detectOperation:finishedScanningVolume:)])
+        {
+            [delegate detectOperation:self finishedScanningVolume:self.volume];
+        }
+    });
 }
 
 @end

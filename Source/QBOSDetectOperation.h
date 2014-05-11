@@ -16,13 +16,9 @@
 @end
     
 
-@interface QBOSDetectOperation : NSOperation {
-@private
-	QBVolume *volume;
-	id<QBOSDetectOperationDelegate> __unsafe_unretained delegate;
-}
+@interface QBOSDetectOperation : NSOperation
 
-@property (unsafe_unretained) id<QBOSDetectOperationDelegate> delegate;
+@property (weak) id<QBOSDetectOperationDelegate> delegate;
 @property (strong) QBVolume *volume;
 
 + (QBOSDetectOperation *)detectOperationWithVolume:(QBVolume *)aVolume;

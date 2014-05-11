@@ -15,12 +15,6 @@
 
 @implementation BCAboutBox
 
-@synthesize applicationName;
-@synthesize versionString;
-@synthesize copyright;
-@synthesize logoImageName;
-@synthesize creditsAttributedString;
-
 + (NSSet *)keyPathsForValuesAffectingValueForKey:(NSString *)key {
 	if([key isEqualToString:@"logoImage"]) {
 		return [NSSet setWithObject:@"logoImageName"];
@@ -31,8 +25,6 @@
 - (id)init
 {
 	if((self = [super initWithWindowNibName:@"BCAboutBox"])) {
-//		NSDictionary *info = [[NSBundle mainBundle] infoDictionary];
-		
 		self.applicationName = [NSApp infoValueForKey:(NSString *)kCFBundleNameKey];
 		self.versionString = [NSString stringWithFormat:NSLocalizedString(@"Version %@ (%@)", @"About box version string"), [NSApp infoValueForKey:@"CFBundleShortVersionString"], [NSApp infoValueForKey:(NSString *)kCFBundleVersionKey]];
 		self.copyright = [NSApp infoValueForKey:@"NSHumanReadableCopyright"];
@@ -76,8 +68,8 @@
 
 - (void)setLogoImageName:(NSString *)newName
 {
-	if(logoImageName != newName) {
-		logoImageName = [newName copy];
+	if(_logoImageName != newName) {
+		_logoImageName = [newName copy];
 		[self updateWindowSize];
 	}
 }

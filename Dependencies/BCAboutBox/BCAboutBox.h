@@ -11,12 +11,6 @@
 
 @interface BCAboutBox : NSWindowController {
 @private
-	NSString *applicationName;
-	NSString *versionString;
-	NSString *copyright;
-	NSString *logoImageName;
-	NSAttributedString *creditsAttributedString;
-	
 	IBOutlet NSImageView *logoView;
 }
 
@@ -24,7 +18,7 @@
 @property (copy, nonatomic) NSString *versionString;
 @property (copy, nonatomic) NSString *copyright;
 @property (copy, nonatomic) NSString *logoImageName;
-@property (unsafe_unretained, readonly) NSImage *logoImage;
+@property (readonly) NSImage *logoImage;
 @property (copy, nonatomic) NSAttributedString *creditsAttributedString;
 
 - (IBAction)display:(id)sender;

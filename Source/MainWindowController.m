@@ -36,20 +36,20 @@ void *MainWindowControllerKVOContext = &MainWindowControllerKVOContext;
 												 name:@"QBRefreshVolumes"
 											   object:nil];
 	
-	[volumesController addObserver:self forKeyPath:@"selectedObjects" options:NSKeyValueObservingOptionInitial context:MainWindowControllerKVOContext];
+	[self.volumesController addObserver:self forKeyPath:@"selectedObjects" options:NSKeyValueObservingOptionInitial context:MainWindowControllerKVOContext];
 }
 
 - (void)dealloc
 {
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
-	[volumeManager removeObserver:self forKeyPath:@"volumes"];
+	[self.volumeManager removeObserver:self forKeyPath:@"volumes"];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
 	if(context == MainWindowControllerKVOContext) {
-		if(object == volumesController && [keyPath isEqualToString:@"selectedObjects"]) {
-			QBVolume *volume = [[volumesController selectedObjects] bc_firstObject];
+		if(object == self.volumesController && [keyPath isEqualToString:@"selectedObjects"]) {
+			QBVolume *volume = [[self.volumesController selectedObjects] bc_firstObject];
 			if(!volume || volume.disk.isCurrentSystem) {
 				[self.bootLaterButton setEnabled:NO];
 				[self.bootNowButton setEnabled:NO];
@@ -74,17 +74,10 @@ void *MainWindowControllerKVOContext = &MainWindowControllerKVOContext;
 	[self refreshStatusMenu];
 }
 
-- (QBVolumeManager *)volumeManager
-{
-	return volumeManager;
-}
-
 - (void)setVolumeManager:(QBVolumeManager *)volManager
 {
 	[[self volumeManager] removeObserver:self forKeyPath:@"volumes"];
-	[self willChangeValueForKey:@"volumeManager"];
-	volumeManager = volManager;
-	[self didChangeValueForKey:@"volumeManager"];
+	_volumeManager = volManager;
 	[[self volumeManager] addObserver:self forKeyPath:@"volumes" options:NSKeyValueObservingOptionNew context:MainWindowControllerKVOContext];
 	[self refreshStatusMenu];
 }
@@ -94,8 +87,8 @@ void *MainWindowControllerKVOContext = &MainWindowControllerKVOContext;
 	NSEnumerator *e = [[[self volumeManager] volumes] reverseObjectEnumerator];
 	QBVolume *vol;
 	// remove existing
-	while([statusMenu numberOfItems] > 8)
-		[statusMenu removeItemAtIndex:1];
+	while([self.statusMenu numberOfItems] > 8)
+		[self.statusMenu removeItemAtIndex:1];
 	
 	while((vol = [e nextObject]))
 	{
@@ -115,7 +108,7 @@ void *MainWindowControllerKVOContext = &MainWindowControllerKVOContext;
 		NSImage *image = [vol.disk.icon copy];
 		[image setSize:NSMakeSize(16.0, 16.0)];
 		[item setImage:image];
-		[statusMenu insertItem:item atIndex:1];
+		[self.statusMenu insertItem:item atIndex:1];
 	}
 }
 
@@ -123,7 +116,7 @@ void *MainWindowControllerKVOContext = &MainWindowControllerKVOContext;
 {
 	if([sender respondsToSelector:@selector(representedObject)])
 	{
-		[volumesController setSelectedObjects:[NSArray arrayWithObject:[sender representedObject]]];
+		[self.volumesController setSelectedObjects:[NSArray arrayWithObject:[sender representedObject]]];
 		[self bootSelectedDriveNow:nil];
 	}
 }
@@ -144,9 +137,9 @@ void *MainWindowControllerKVOContext = &MainWindowControllerKVOContext;
 
 - (BOOL)setSelectedVolumeForBooting
 {
-	if([[volumesController selectedObjects] count] <= 0)
+	if([[self.volumesController selectedObjects] count] <= 0)
 		return NO;
-	QBVolume *volume = [[volumesController selectedObjects] objectAtIndex:0];
+	QBVolume *volume = [[self.volumesController selectedObjects] objectAtIndex:0];
 	//NSLog(@"Setting boot volume: %@", volume);
 	QBVolumeManagerError result = [[self volumeManager] setBootDisk:volume nextOnly:YES];
 	if(result != kQBVolumeManagerSuccess)

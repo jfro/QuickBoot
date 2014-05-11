@@ -19,9 +19,6 @@
 {
 	xpc_connection_t helperConnection;
 }
-
-//- (NSString *)helperPath;
-//- (BOOL)passwordlessBootingEnabled;
 @property (nonatomic, strong) BDDisk *efiDisk;
 @end
 
@@ -39,10 +36,6 @@
 			   selector:@selector(refresh:)
 				   name:@"QBRefreshVolumes"
 				 object:nil];
-		[[NSNotificationCenter defaultCenter] addObserver:self
-												 selector:@selector(passwordlessBootingChanged:)
-													 name:@"QBPasswordlessBootingChanged"
-												   object:nil];
         NSError *error = nil;
 		if(![self installHelperIfNeeded:&error] && error)
 			[NSApp presentError:error];
@@ -137,81 +130,6 @@
 }
 
 #pragma mark -
-
-/**
- * Do the boot setting, taken from cocoadev.com write file with privs example
- */
-//- (QBVolumeManagerError)setBootDisk:(QBVolume *)volume nextOnly:(BOOL)nextOnly {
-//	QBVolumeManagerError returnValue = kQBVolumeManagerSuccess;
-//    
-//    BOOL useLegacyMode = [[NSUserDefaults standardUserDefaults] boolForKey:@"UseLegacyMode"];
-//    BDDisk *disk = volume.disk;
-//    if(volume.legacyOS && !useLegacyMode && self.efiDisk) { // since we flag windows as legacy right now
-//        disk = self.efiDisk;
-//    }
-//	
-//	if([self passwordlessBootingEnabled])
-//	{
-//		NSTask *helperTask = [[NSTask alloc] init];
-//		NSArray *arguments = [NSArray arrayWithObject:[disk devicePath]];
-//		if(volume.legacyOS && useLegacyMode)
-//			arguments = [arguments arrayByAddingObject:@"--legacy"];
-//		[helperTask setLaunchPath:[self helperPath]];
-//		[helperTask setArguments:arguments];
-//		[helperTask launch];
-//		[helperTask waitUntilExit];
-//		returnValue = [helperTask terminationStatus];
-//	}
-//	else
-//	{
-//		AuthorizationRef myAuthorizationRef;
-//		OSStatus myStatus;
-//		// bring app forward so auth window is in focus
-//		[NSApp activateIgnoringOtherApps:YES];
-//		
-//		myStatus = AuthorizationCreate (NULL, kAuthorizationEmptyEnvironment, kAuthorizationFlagDefaults, &myAuthorizationRef);
-//		
-//		if (myStatus == noErr) {
-//			char *args[6];
-//			args[0] = "--device";
-//			args[1] = (char *)[[disk devicePath] UTF8String];
-//			args[2] = "--nextonly";
-//			args[3] = "--setBoot";
-//			if(volume.legacyOS && useLegacyMode) {
-//				args[4] = "--legacy";
-//			}
-//			else {
-//				args[4] = NULL;
-//			}
-//			args[5] = NULL; // terminate the args
-//#pragma clang diagnostic push
-//#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-//			myStatus = AuthorizationExecuteWithPrivileges(myAuthorizationRef, "/usr/sbin/bless", 0, args, NULL);
-//#pragma clang diagnostic pop
-//			
-//			if (myStatus != noErr)
-//			{
-//				switch (myStatus) {
-//					case errAuthorizationDenied:
-//						returnValue = kQBVolumeManagerAuthenticationDenied;
-//						break;
-//					case errAuthorizationCanceled:
-//						returnValue = kQBVolumeManagerCanceled;
-//						break;
-//						
-//					default:
-//						returnValue = kQBVolumeManagerUnknownError;
-//						break;
-//				}
-//				//return kQBVolumeManagerSetBootError;
-//			}
-//		}
-//		else
-//			returnValue = kQBVolumeManagerAuthenticationError;
-//	}
-//
-//	return returnValue;
-//}
 
 - (void)setBootVolume:(QBVolume *)volume nextOnly:(BOOL)nextOnly withCompletionHandler:(QBVolumeManagerSetBootCompletionBlock)handler
 {

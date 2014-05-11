@@ -29,7 +29,6 @@
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
-                            <binding destination="29" name="enabled" keyPath="selection.isLeopardOrBetter" id="31"/>
                             <binding destination="9" name="value" keyPath="values.ShowIconInDock" id="74"/>
                         </connections>
                     </button>
@@ -41,7 +40,6 @@
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
-                            <binding destination="29" name="enabled" keyPath="selection.isLeopardOrBetter" id="32"/>
                             <binding destination="9" name="value" keyPath="values.ShowStatusIcon" id="75"/>
                         </connections>
                     </button>

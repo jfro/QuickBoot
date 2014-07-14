@@ -60,8 +60,9 @@ static void * const kShowStatusIconContext = (void *)&kShowStatusIconContext;
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"ShowStatusIcon"]) {
         if (!self.statusItem) {
             self.statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:24.0f];
-            [self.statusItem setImage:[NSImage imageNamed:@"StatusItemIcon"]];
-            [self.statusItem setAlternateImage:[NSImage imageNamed:@"StatusItemIconAlt"]];
+            NSImage *statusImage = [NSImage imageNamed:@"StatusItemIcon"];
+            [statusImage setTemplate:YES];
+            [self.statusItem setImage:statusImage];
             [self.statusItem setHighlightMode:YES];
             [self.statusItem setMenu:self.statusMenu];
         }
